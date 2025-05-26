@@ -11,6 +11,9 @@
         <h1>[[*{name}]]</h1>
         <p class="fs-2">[[*{description}]]</p>
         <p>Prezzo: &#8364 [[*{price}]]</p>
+        <figure>
+            <img th:src="@{/images/{img}(img=*{image})}" alt="">
+        </figure>
     </div>
     <th:block th:replace="~{fragments/buttons :: button('Torna alla Lista', @{'/pizzas'})}"/>
     
