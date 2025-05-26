@@ -7,7 +7,24 @@
     <title>Test Pizza</title>
 </head>
 <body>
-    <h1>Test pagina pizze</h1>
-    <p th:text="${pizzas}"></p>
+    <h1>Lista Pizze</h1>
+    <table class="table" th:if="${pizzas.size() > 0}">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Prezzo</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+                <td>[[*{name}]]</td>
+                <td>[[*{price}]]</td>
+                <td><a th:href="@{'/pizzas/'+*{id}}" th:text="Dettaglio"></a></td>
+            </tr>
+            
+        </tbody>
+    </table>
+    <p th:text="Non ci sono pizze disponibili" th:unless="${pizzas.size() > 0}"></p>
 </body>
 </html>
