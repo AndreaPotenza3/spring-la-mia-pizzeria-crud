@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <th:block th:fragment="head-styles">
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    </th:block>
+    <title>Document</title>
+</head>
+<body>
+    <th:block th:fragment="button(label, url)">
+        <a th:href="${url}" th:text="${label}" class="text-white text-decoration-none py-2 px-3 mx-3 my-3 bg-secondary rounded-2"></a>
+    </th:block>
+    
+</body>
+</html>

@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <p th:text="${pizza}"></p>
+    <div class="text-center" th:object="${pizza}">
+        <h1>[[*{name}]]</h1>
+        <p class="fs-2">[[*{description}]]</p>
+        <p>Prezzo: &#8364 [[*{price}]]</p>
+    </div>
+    <th:block th:replace="~{fragments/buttons :: button('Torna alla Lista', @{'/pizzas'})}"/>
+    
 </body>
 </html>
