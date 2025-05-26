@@ -25,7 +25,6 @@
             <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
                 <td>[[*{name}]]</td>
                 <td>[[*{price}]]</td>
-                <!-- <td><a th:href="@{'/pizzas/'+*{id}}" th:text="Dettaglio"></a></td> -->
                 <td>
                     <th:block th:replace="~{fragments/buttons :: button('Dettaglio', @{/pizzas/{id}(id=${pizza.id})})}"></th:block>
                 </td>
