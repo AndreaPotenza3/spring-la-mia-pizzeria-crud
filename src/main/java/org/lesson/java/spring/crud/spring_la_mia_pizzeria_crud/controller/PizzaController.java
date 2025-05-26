@@ -20,14 +20,32 @@ public class PizzaController {
     @Autowired
     private PizzaRepository repository;
 
-    @GetMapping
-    public String index(Model model) {
+    // @GetMapping
+    // public String index(Model model) {
 
-        List<Pizza> pizzas = repository.findAll();
+    //     List<Pizza> pizzas = repository.findAll();
+
+    //     model.addAttribute("pizzas", pizzas);
+    //     return "pizzas/index";
+    // }
+
+    @GetMapping
+    public String index(@RequestParam(name = "name", required = false) String name, Model model) {
+
+        List<Pizza> pizzas;
+
+        if (name != null && !name.isBlank()) {
+            pizzas = repository.findByNameContainingIgnoreCase(name);
+        } else {
+            pizzas = repository.findAll();
+        }
 
         model.addAttribute("pizzas", pizzas);
+        model.addAttribute("name", name);
+        
         return "pizzas/index";
-    }
+}
+
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") Integer id, Model model) {
