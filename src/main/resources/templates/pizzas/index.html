@@ -27,6 +27,7 @@
                     <th>Prezzo</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,11 @@
                     </td>
                     <td>
                         <th:block th:replace="~{fragments/buttons :: button('Modifica', @{/pizzas/edit/{id}(id=${pizza.id})})}"></th:block>
+                    </td>
+                    <td>
+                       <form action="#" th:action="@{/pizzas/delete/{id}(id=${pizza.id})}" method="post">
+                        <button type="submit" class="btn btn-warning">Elimina</button>
+                       </form>
                     </td>
                 </tr>
                 
