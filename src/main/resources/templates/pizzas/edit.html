@@ -9,8 +9,8 @@
 <body>
     <main>
         <div class="container">
-            <h1 th:text="'Crea la tua pizza'"></h1>
-            <form id="pizza-form" th:action="@{/pizzas/create}" th:object="${pizza}" method="post">
+            <h1 th:text="'Modifica una pizza'"></h1>
+            <form id="pizza-form" th:action="@{/pizzas/edit/{id}(id=${pizza.id})}" th:object="${pizza}" method="post">
                 <div class="mb-2">
                     <label class="form-label" for="name">Nome</label>
                     <input class="form-control" type="text" id="name" th:field="*{name}">

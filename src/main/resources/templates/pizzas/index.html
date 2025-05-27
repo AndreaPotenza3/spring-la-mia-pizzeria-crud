@@ -7,31 +7,43 @@
     <title>Pizzeria</title>
 </head>
 <body>
-    <h1>Lista Pizze</h1>
-    <form th:action="@{/pizzas}" method="get" class="mb-4">
-        <input type="text" name="name" placeholder="Cerca per nome" th:value="${param.name}" class="form-control w-25 d-inline" />
-        <button type="submit" class="btn btn-primary">Cerca</button>
-    </form>
-
-    <table class="table" th:if="${pizzas.size() > 0}">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Prezzo</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
-                <td>[[*{name}]]</td>
-                <td>[[*{price}]]</td>
-                <td>
-                    <th:block th:replace="~{fragments/buttons :: button('Dettaglio', @{/pizzas/{id}(id=${pizza.id})})}"></th:block>
-                </td>
-            </tr>
-            
-        </tbody>
-    </table>
-    <p th:text="'Non ci sono pizze disponibili'" th:unless="${pizzas.size() > 0}"></p>
+    <div class="container">
+        <h1 class="mb-3">Lista Pizze</h1>
+        <div class="row align-items-baseline">
+            <div class="col">
+                <form th:action="@{/pizzas}" method="get" class="mb-4 d-inline">
+                    <input type="text" name="name" placeholder="Cerca per nome" th:value="${param.name}" class="form-control w-25 d-inline" />
+                    <button type="submit" class="btn btn-primary">Cerca</button>
+                </form>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <a class="btn btn-primary mb-2" th:href="@{/pizzas/create}">Crea una nuova pizza</a>
+            </div>
+        </div>
+        <table class="table" th:if="${pizzas.size() > 0}">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Prezzo</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="pizza : ${pizzas}" th:object="${pizza}">
+                    <td>[[*{name}]]</td>
+                    <td>&#8364 [[*{price}]]</td>
+                    <td>
+                        <th:block th:replace="~{fragments/buttons :: button('Dettaglio', @{/pizzas/{id}(id=${pizza.id})})}"></th:block>
+                    </td>
+                    <td>
+                        <th:block th:replace="~{fragments/buttons :: button('Modifica', @{/pizzas/edit/{id}(id=${pizza.id})})}"></th:block>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <p th:text="'Non ci sono pizze disponibili'" th:unless="${pizzas.size() > 0}"></p>
+    </div>
 </body>
 </html>
