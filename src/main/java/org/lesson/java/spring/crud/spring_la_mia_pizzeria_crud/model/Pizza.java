@@ -33,7 +33,7 @@ public class Pizza {
     @Column(name = "image")
     private String image;
     
-    @NotNull
+    @NotNull(message = "The price cannot be null")
     @Min(value = 0)
     @Column(name = "price", nullable = false)
     private BigDecimal price;

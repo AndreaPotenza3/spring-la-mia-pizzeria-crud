@@ -9,8 +9,8 @@
     <title>Document</title>
 </head>
 <body>
-    <th:block th:fragment="button(label, url)">
-        <a th:href="${url}" th:text="${label}" class="btn btn-secondary my-2"></a>
+    <th:block th:fragment="button(label, url, className)">
+        <a th:href="${url}" th:text="${label}" th:class="${className}"></a>
     </th:block>
     
 </body>

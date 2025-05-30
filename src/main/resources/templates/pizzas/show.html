@@ -15,7 +15,7 @@
             <img th:src="@{/images/{img}(img=*{image})}" alt="">
         </figure>
     </div>
-    <th:block th:replace="~{fragments/buttons :: button('Torna alla Lista', @{'/pizzas'})}"/>
+    <th:block th:replace="~{fragments/buttons :: button('Torna alla Lista', @{'/pizzas'},'btn btn-primary')}"/>
     
 </body>
 </html>
